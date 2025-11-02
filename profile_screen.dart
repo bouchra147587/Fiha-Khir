@@ -1,7 +1,36 @@
 import 'package:flutter/material.dart';
+import 'custom_bottom_nav.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  int _selectedIndex = 3; // default: Profile tab selected
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    // Optional: navigate between screens
+    // switch (index) {
+    //   case 0:
+    //     Navigator.push(context, MaterialPageRoute(builder: (_) => const HomeScreen()));
+    //     break;
+    //   case 1:
+    //     Navigator.push(context, MaterialPageRoute(builder: (_) => const ProblemsScreen()));
+    //     break;
+    //   case 2:
+    //     Navigator.push(context, MaterialPageRoute(builder: (_) => const OrgsScreen()));
+    //     break;
+    //   case 3:
+    //     break; // already in Profile
+    // }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -244,11 +273,12 @@ class ProfileScreen extends StatelessWidget {
           ],
         ),
       ),
+
+    
     );
   }
 
   // --- Helper Widgets ---
-
   Widget _buildStatCard({
     required IconData icon,
     required String label,
